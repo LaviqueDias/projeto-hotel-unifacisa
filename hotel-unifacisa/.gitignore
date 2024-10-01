@@ -1,7 +1,7 @@
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-hotel-unifacisa/src/main/resources/
+.properties
 
 ### STS ###
 .apt_generated
