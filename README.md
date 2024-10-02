@@ -31,7 +31,7 @@ $ ./mvnw clean package
 ```
 - Executar a aplicação:
 ```
-$ java -jar target/todolist-0.0.1-SNAPSHOT.jar
+$ java -jar target/hotel-unifacisa-0.0.1-SNAPSHOT.jar
 ```
 
 A API poderá ser acessada em [localhost:8080](http://localhost:8080).
