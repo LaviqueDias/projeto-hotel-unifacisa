@@ -49,12 +49,12 @@ public class Reserva {
 
     
     @ManyToOne
-    @JoinColumn(name = "quartosEscolhidos")
+    @JoinColumn(name = "quartosEscolhidos",  referencedColumnName = "numeroQuarto")
     private Quarto quartoEscolhido;
 
     
     @ManyToOne
-    @JoinColumn(name = "hospedesEscolhidos")
+    @JoinColumn(name = "hospedesEscolhidos",  referencedColumnName = "cpf")
     private Hospede hospedeEscolhido;
 
     @Column(nullable = false)

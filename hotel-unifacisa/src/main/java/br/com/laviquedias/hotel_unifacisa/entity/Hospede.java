@@ -5,6 +5,8 @@ import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.laviquedias.hotel_unifacisa.dto.HospedeDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,6 +45,7 @@ public class Hospede {
     @Column(nullable = false)
     private String telefone;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "hospedeEscolhido")
     private Set<Reserva> historicoReservas = new HashSet<Reserva>();
 
