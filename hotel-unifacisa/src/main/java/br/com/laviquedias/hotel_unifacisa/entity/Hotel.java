@@ -2,6 +2,9 @@ package br.com.laviquedias.hotel_unifacisa.entity;
 
 import java.util.Set;
 
+import org.springframework.beans.BeanUtils;
+
+import br.com.laviquedias.hotel_unifacisa.dto.HotelDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,6 +51,10 @@ public class Hotel {
     public Hotel(String nome, String endereco) {
         this.nome = nome;
         this.endereco = endereco;
+    }
+
+    public Hotel(HotelDTO hotel){
+        BeanUtils.copyProperties(hotel, this);
     }
     
 
