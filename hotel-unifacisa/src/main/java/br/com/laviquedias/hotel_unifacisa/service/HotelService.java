@@ -4,11 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import br.com.laviquedias.hotel_unifacisa.dto.HotelDTO;
 import br.com.laviquedias.hotel_unifacisa.entity.Hotel;
 import br.com.laviquedias.hotel_unifacisa.repository.HotelRepository;
 
+@Service
 public class HotelService {
 
     private HotelRepository hotelRepository;
