@@ -3,10 +3,14 @@ package br.com.laviquedias.hotel_unifacisa.entity;
 
 import org.springframework.beans.BeanUtils;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.laviquedias.hotel_unifacisa.dto.FuncionarioDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -38,6 +42,11 @@ public class Funcionario {
 
     @Column(nullable = false)
     private String turnoDeTrabalho;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "IdHotel")
+    private Hotel hotel;
 
     public Funcionario(String nome, String cpf, String cargo, double salarioPorHora, String turnoDeTrabalho) {
         this.nome = nome;

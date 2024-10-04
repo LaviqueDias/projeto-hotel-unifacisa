@@ -4,6 +4,8 @@ package br.com.laviquedias.hotel_unifacisa.entity;
 
 import org.springframework.beans.BeanUtils;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.laviquedias.hotel_unifacisa.dto.ReservaDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -63,6 +65,11 @@ public class Reserva {
 
     @Column(nullable = false)
     private String registroSaida;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "IdHotel")
+    private Hotel hotel;
 
     public Reserva(ReservaDTO reserva){
         BeanUtils.copyProperties(reserva, this);

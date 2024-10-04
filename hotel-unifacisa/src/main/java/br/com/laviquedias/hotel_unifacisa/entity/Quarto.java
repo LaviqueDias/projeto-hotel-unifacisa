@@ -11,6 +11,8 @@ import br.com.laviquedias.hotel_unifacisa.dto.QuartoDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -49,6 +51,11 @@ public class Quarto {
     @JsonIgnore
     @OneToMany(mappedBy = "quartoEscolhido")
     private Set<Reserva> listaReservas = new HashSet<Reserva>();
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "IdHotel")
+    private Hotel hotel;
 
     
     public Quarto(QuartoDTO quarto){
