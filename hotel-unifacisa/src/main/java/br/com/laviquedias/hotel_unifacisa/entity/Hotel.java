@@ -25,13 +25,13 @@ public class Hotel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long idHotel;
+    private Long idHotel;
     
     @Column(nullable = false)
-    protected String nome;
+    private String nome;
 
     @Column(nullable = false)
-    protected String endereco;
+    private String endereco;
 
     @OneToMany(mappedBy = "hotel")
     private Set<Quarto> listaQuartos;
