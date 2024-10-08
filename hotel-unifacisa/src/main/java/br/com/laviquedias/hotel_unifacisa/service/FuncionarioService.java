@@ -9,19 +9,28 @@ import org.springframework.stereotype.Service;
 import br.com.laviquedias.hotel_unifacisa.dto.FuncionarioDTO;
 import br.com.laviquedias.hotel_unifacisa.entity.Funcionario;
 import br.com.laviquedias.hotel_unifacisa.repository.FuncionarioRepository;
+import br.com.laviquedias.hotel_unifacisa.repository.HotelRepository;
 
 @Service
 public class FuncionarioService {
 
     private FuncionarioRepository funcionarioRepository;
+    private HotelRepository hotelRepository;
 
-    public FuncionarioService(FuncionarioRepository funcionarioRepository) {
+    public FuncionarioService(FuncionarioRepository funcionarioRepository, HotelRepository hotelRepository) {
         this.funcionarioRepository = funcionarioRepository;
+        this.hotelRepository = hotelRepository;
     }
+
 
     public Set<FuncionarioDTO> create(FuncionarioDTO funcionarioDTO){
         Funcionario funcionario = new Funcionario(funcionarioDTO);
-        funcionarioRepository.save(funcionario);
+
+        if(funcionario.getHotelFuncionario() != null){
+            funcionario.getHotelFuncionario().getFuncionarios().add(funcionario);
+            funcionarioRepository.save(funcionario);
+        }
+        
         return list();
     }
 
