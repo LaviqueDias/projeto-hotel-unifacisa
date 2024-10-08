@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
 
+import br.com.laviquedias.hotel_unifacisa.entity.Hotel;
 import br.com.laviquedias.hotel_unifacisa.entity.Quarto;
 import br.com.laviquedias.hotel_unifacisa.entity.Reserva;
 
@@ -24,6 +25,7 @@ public class QuartoDTO {
     private double preco;
     private String status;
     private Set<Reserva> listaReservas = new HashSet<Reserva>();
+    private Hotel hotelQuarto;
 
     public QuartoDTO(Quarto quarto){
         BeanUtils.copyProperties(quarto, this);

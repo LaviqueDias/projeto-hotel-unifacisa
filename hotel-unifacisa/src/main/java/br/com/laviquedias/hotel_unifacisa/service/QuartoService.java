@@ -21,7 +21,12 @@ public class QuartoService {
 
     public Set<QuartoDTO> create(QuartoDTO quartoDTO){
         Quarto quarto = new Quarto(quartoDTO);
-        quartoRepository.save(quarto);
+
+        if(quarto.getHotelQuarto() != null){
+            quarto.getHotelQuarto().getQuartos().add(quarto);
+            quartoRepository.save(quarto);
+        }
+        
         return list();
     } 
 
