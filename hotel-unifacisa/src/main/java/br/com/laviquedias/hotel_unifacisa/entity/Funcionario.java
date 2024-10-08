@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @EqualsAndHashCode(of = "cpf")
 
@@ -48,13 +50,7 @@ public class Funcionario {
     @JoinColumn(name = "idHotel")
     private Hotel hotelFuncionario;
 
-    public Funcionario(String nome, String cpf, String cargo, double salarioPorHora, String turnoDeTrabalho) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.cargo = cargo;
-        this.salarioPorHora = salarioPorHora;
-        this.turnoDeTrabalho = turnoDeTrabalho;
-    }
+   
 
     public Funcionario(FuncionarioDTO funcionario){
         BeanUtils.copyProperties(funcionario, this);
