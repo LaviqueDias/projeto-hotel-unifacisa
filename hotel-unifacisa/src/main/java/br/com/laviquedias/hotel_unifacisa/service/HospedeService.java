@@ -9,19 +9,35 @@ import org.springframework.stereotype.Service;
 import br.com.laviquedias.hotel_unifacisa.dto.HospedeDTO;
 import br.com.laviquedias.hotel_unifacisa.entity.Hospede;
 import br.com.laviquedias.hotel_unifacisa.repository.HospedeRepository;
+import br.com.laviquedias.hotel_unifacisa.repository.HotelRepository;
 
 @Service
 public class HospedeService {
 
     private HospedeRepository hospedeRepository;
+    private HotelRepository hotelRepository;
 
-    public HospedeService(HospedeRepository hospedeRepository) {
+    public HospedeService(HospedeRepository hospedeRepository, HotelRepository hotelRepository) {
         this.hospedeRepository = hospedeRepository;
+        this.hotelRepository = hotelRepository;
     }
 
     public Set<HospedeDTO> create(HospedeDTO hospedeDTO){
         Hospede hospede = new Hospede(hospedeDTO);
-        hospedeRepository.save(hospede);
+        
+        if(hospede.getHotelHospede() != null){
+            if(hotelRepository.findById(hospede.getHotelHospede().getIdHotel()).get() != null){
+                hospede.getHotelHospede().getHospedes().add(hospede);
+                hospedeRepository.save(hospede);
+                return list();
+            } else{
+                hotelRepository.save(hospede.getHotelHospede());
+                hospede.getHotelHospede().getHospedes().add(hospede);
+                hospedeRepository.save(hospede);
+                return list();
+            }
+        }
+
         return list();
     }
     

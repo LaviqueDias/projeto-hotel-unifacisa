@@ -15,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,16 +28,17 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode(of = "cpf")
 @NoArgsConstructor
+@AllArgsConstructor
 
 @Entity
 @Table(name = "hospedes")
 public class Hospede {
     
-    @Column(nullable = false)
-    private String nome;
-    
     @Id
     private String cpf;
+    
+    @Column(nullable = false)
+    private String nome;
 
     @Column(nullable = false)
     private String dataNascimento;
@@ -53,16 +55,9 @@ public class Hospede {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "IdHotel")
-    private Hotel hotel;
+    @JoinColumn(name = "idHotel")
+    private Hotel hotelHospede;
 
-    public Hospede(String nome, String cpf, String dataNascimento, String endereco, String telefone) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
-        this.endereco = endereco;
-        this.telefone = telefone;
-    }
 
     public Hospede(HospedeDTO hospede){
         BeanUtils.copyProperties(hospede, this);

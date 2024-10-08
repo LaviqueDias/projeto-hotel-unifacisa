@@ -23,10 +23,10 @@ public class HotelDTO {
     private Long idHotel;    
     private String nome;
     private String endereco;
-    private Set<Quarto> listaQuartos = new HashSet<Quarto>();
-    private Set<Hospede> listaHospedes = new HashSet<Hospede>();
-    private Set<Reserva> listaReserva = new HashSet<Reserva>();
-    private Set<Funcionario> listaFuncionarios = new HashSet<Funcionario>();
+    private Set<Quarto> quartos = new HashSet<Quarto>();
+    private Set<Hospede> hospedes = new HashSet<Hospede>();
+    private Set<Reserva> reserva = new HashSet<Reserva>();
+    private Set<Funcionario> funcionarios = new HashSet<Funcionario>();
 
     public HotelDTO(Hotel hotel){
         BeanUtils.copyProperties(hotel, this);

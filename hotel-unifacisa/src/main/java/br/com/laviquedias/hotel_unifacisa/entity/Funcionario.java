@@ -45,8 +45,8 @@ public class Funcionario {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "IdHotel")
-    private Hotel hotel;
+    @JoinColumn(name = "idHotel")
+    private Hotel hotelFuncionario;
 
     public Funcionario(String nome, String cpf, String cargo, double salarioPorHora, String turnoDeTrabalho) {
         this.nome = nome;

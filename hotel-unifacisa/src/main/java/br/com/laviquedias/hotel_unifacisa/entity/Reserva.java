@@ -68,8 +68,8 @@ public class Reserva {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "IdHotel")
-    private Hotel hotel;
+    @JoinColumn(name = "idHotel")
+    private Hotel hotelReserva;
 
     public Reserva(ReservaDTO reserva){
         BeanUtils.copyProperties(reserva, this);

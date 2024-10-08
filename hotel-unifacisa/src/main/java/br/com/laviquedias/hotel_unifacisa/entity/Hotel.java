@@ -36,17 +36,17 @@ public class Hotel {
     @Column(nullable = false)
     private String endereco;
 
-    @OneToMany(mappedBy = "hotel")
-    private Set<Quarto> listaQuartos;
+    @OneToMany(mappedBy = "hotelQuarto")
+    private Set<Quarto> quartos;
 
-    @OneToMany(mappedBy = "hotel")
-    private Set<Hospede> listaHospedes;
+    @OneToMany(mappedBy = "hotelHospede")
+    private Set<Hospede> hospedes;
 
-    @OneToMany(mappedBy = "hotel")
-    private Set<Reserva> listaReserva;
+    @OneToMany(mappedBy = "hotelReserva")
+    private Set<Reserva> reservas;
 
-    @OneToMany(mappedBy = "hotel")
-    private Set<Reserva> listaFuncionarios;
+    @OneToMany(mappedBy = "hotelFuncionario")
+    private Set<Funcionario> funcionarios;
 
     public Hotel(String nome, String endereco) {
         this.nome = nome;

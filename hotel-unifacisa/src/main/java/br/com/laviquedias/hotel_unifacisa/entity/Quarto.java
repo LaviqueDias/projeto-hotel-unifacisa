@@ -54,8 +54,8 @@ public class Quarto {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "IdHotel")
-    private Hotel hotel;
+    @JoinColumn(name = "idHotel")
+    private Hotel hotelQuarto;
 
     
     public Quarto(QuartoDTO quarto){
