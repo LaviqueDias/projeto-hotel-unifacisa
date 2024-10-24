@@ -3,6 +3,7 @@ package br.com.laviquedias.hotel_unifacisa.dto;
 import org.springframework.beans.BeanUtils;
 
 import br.com.laviquedias.hotel_unifacisa.entity.Hospede;
+import br.com.laviquedias.hotel_unifacisa.entity.Hotel;
 import br.com.laviquedias.hotel_unifacisa.entity.Quarto;
 import br.com.laviquedias.hotel_unifacisa.entity.Reserva;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class ReservaDTO {
     private Hospede hospedeEscolhido;
     private String registroEntrada;
     private String registroSaida;
+    private Hotel hotelReserva;
 
     public ReservaDTO(Reserva reserva){
         BeanUtils.copyProperties(reserva, this);

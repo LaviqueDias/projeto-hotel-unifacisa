@@ -9,17 +9,14 @@ import org.springframework.stereotype.Service;
 import br.com.laviquedias.hotel_unifacisa.dto.FuncionarioDTO;
 import br.com.laviquedias.hotel_unifacisa.entity.Funcionario;
 import br.com.laviquedias.hotel_unifacisa.repository.FuncionarioRepository;
-import br.com.laviquedias.hotel_unifacisa.repository.HotelRepository;
 
 @Service
 public class FuncionarioService {
 
     private FuncionarioRepository funcionarioRepository;
-    private HotelRepository hotelRepository;
 
-    public FuncionarioService(FuncionarioRepository funcionarioRepository, HotelRepository hotelRepository) {
+    public FuncionarioService(FuncionarioRepository funcionarioRepository) {
         this.funcionarioRepository = funcionarioRepository;
-        this.hotelRepository = hotelRepository;
     }
 
 

@@ -1,5 +1,6 @@
 package br.com.laviquedias.hotel_unifacisa.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
@@ -12,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(of = "idHotel")
 
 @Entity
@@ -43,15 +46,11 @@ public class Hotel {
     private Set<Hospede> hospedes;
 
     @OneToMany(mappedBy = "hotelReserva")
-    private Set<Reserva> reservas;
+    private Set<Reserva> reservas  = new HashSet<Reserva>();
 
     @OneToMany(mappedBy = "hotelFuncionario")
     private Set<Funcionario> funcionarios;
 
-    public Hotel(String nome, String endereco) {
-        this.nome = nome;
-        this.endereco = endereco;
-    }
 
     public Hotel(HotelDTO hotel){
         BeanUtils.copyProperties(hotel, this);

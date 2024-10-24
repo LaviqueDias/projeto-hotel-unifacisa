@@ -49,12 +49,12 @@ public class Reserva {
     @Column(nullable = false)
     private int qntdHospedes;
 
-    
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "quartosEscolhidos",  referencedColumnName = "numeroQuarto")
     private Quarto quartoEscolhido;
 
-    
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "hospedesEscolhidos",  referencedColumnName = "cpf")
     private Hospede hospedeEscolhido;

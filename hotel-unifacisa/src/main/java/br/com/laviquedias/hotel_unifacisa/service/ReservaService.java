@@ -22,7 +22,18 @@ public class ReservaService {
     
     public Set<ReservaDTO> create(ReservaDTO reservaDTO){
         Reserva reserva = new Reserva(reservaDTO);
-        reservaRepository.save(reserva);
+        if(reserva.getQuartoEscolhido() != null){
+            if(reserva.getHospedeEscolhido() != null){
+                if(reserva.getHotelReserva() != null){
+                    reserva.getQuartoEscolhido().getListaReservas().add(reserva);
+                    reserva.getHospedeEscolhido().getHistoricoReservas().add(reserva);
+                    reserva.getHotelReserva().getReservas().add(reserva);
+                    reservaRepository.save(reserva);
+                }
+            }
+        }
+          
+        
         return list();
     }
 
